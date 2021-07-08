@@ -1,0 +1,25 @@
+def maxValue(self, n: str, x: int) -> str:
+        l=len(n)
+        neg=False
+        f=False
+        if n[0]=='-':
+            neg=True
+        if neg:
+            n=n[1:]
+            for i in range(l-1):
+                if int(n[i])>x:
+                    f=True
+                    n='-'+n[:i]+str(x)+n[i:]
+                    break
+            if i==l-2 and not f:
+                n='-'+n[:i+1]+str(x)+n[i+1:]
+        else:
+            f=False
+            for i in range(l):
+                if int(n[i])<x:
+                    f=True
+                    n=n[:i]+str(x)+n[i:]
+                    break
+            if i==l-1 and not f:
+                n=n[:i+1]+str(x)
+        return n
