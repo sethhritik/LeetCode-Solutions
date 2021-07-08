@@ -1,0 +1,18 @@
+Sort the products array to get lexicographically smallest words and then iterate over products till length of target and check for at most three matching words in products with prefix[0:i+1].
+
+def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
+        ans=[]
+        n=len(searchWord)
+        l=sorted(products)
+        for i in range(n):
+            pre = searchWord[:i+1]
+            t = []
+            c=0
+            for j in l:
+                if j[:i+1]==pre:
+                    t.append("".join(j))
+                    c+=1
+                if c==3:
+                    break
+            ans.append(t)
+        return ans
