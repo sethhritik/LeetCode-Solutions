@@ -1,0 +1,13 @@
+This uses O(m! * n * m) time and the extra memory use is O(m).
+
+class Solution:
+    def maxCompatibilitySum(self, students: List[List[int]], mentors: List[List[int]]) -> int:
+        l=itertools.permutations(range(len(students)))
+        res=0
+        for perm in l:
+            ans = 0
+            for i in range(len(students)):
+                for j in range(len(students[0])):
+                    ans += students[i][j] == mentors[perm[i]][j]
+            res = max(ans, res)
+        return res
