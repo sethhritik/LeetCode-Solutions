@@ -1,0 +1,18 @@
+class Solution:
+    def getLucky(self, s: str, k: int) -> int:
+        ans=0
+        after=""
+        for i in s:
+            after+=str(ord(i)-96)
+        for i in after:
+            ans+=int(i)
+        k-=1
+        after = str(ans)
+        while k:
+            ans=0
+            k-=1
+            for i in after:
+                ans+=int(i)
+            after=str(ans)
+        return ans
+            
